@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace E_Library_Management
 {
@@ -55,6 +59,7 @@ namespace E_Library_Management
                     LinkButton3.Visible = true;  // logout 
                     LinkButton7.Visible = true;  //Hello user
                     LinkButton7.Text = "Hello " + Session["username"].ToString();
+                    LinkButton7.Attributes.Add("href", "homepage.aspx");
 
 
                     LinkButton6.Visible = false;
@@ -122,7 +127,7 @@ namespace E_Library_Management
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Write("<script language='javascript'>window.alert('Successfully Logged Out');window.location='yourpage.aspx';</script>");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert_text", "alertn()", true);
             Response.Redirect("homepage.aspx");
         }
 

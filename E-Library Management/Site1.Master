@@ -27,6 +27,14 @@
     <script src="bootstrap/JS/jquery-3.3.1.slim.min.js"></script>
     <script src="bootstrap/JS/popper.min.js"></script>
     <script src="bootstrap/JS/bootstrap.min.js"></script>
+    <link href="sweetalert/animate.min.css" rel="stylesheet" />
+    <script src="sweetalert/sweetalert2.js"></script>
+    <script>
+
+        function alert() {
+            swal("Done!", "Book was successfully added .", "success");
+        }
+     </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -52,6 +60,9 @@
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="about.aspx">About Us</a>
+                        </li>
+                         <li class="nav-item active">
+                            <a class="nav-link" href="News.aspx" style ="color: white;">News</a>
                         </li>
                    
 

@@ -1,5 +1,53 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="userprofile.aspx.cs" Inherits="E_Library_Management.userprofile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+                            <script src="sweetalert/sweetalert.min.js"></script>
+            <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+            
+          <link href ="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" rel ="stylesheet"/>
+          <script src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+    <script src="bootstrap/JS/bootstrap.min.js"></script>
+    <script src="bootstrap/JS/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap/JS/popper.min.js"></script>
+        <script>
+
+            function alert() {
+                swal("Done!", "Book was successfully issued .", "success");
+            }
+
+            function alertn() {
+                swal("Book Already issued to the user, try another ID");
+            }
+            function alertn2() {
+                swal("Session Expired! Please Login Again");
+            }
+
+            function alertn3() {
+                swal("Invalid Entry!");
+            }
+
+            function alertf() {
+                swal("Record found!");
+            }
+
+            function alertu() {
+                swal("Done!", "Details were successfully updated.", "success");
+            }
+
+            function alertd() {
+                swal("Done!", "Book was successfully returned.", "success");
+            }
+
+
+            $(document).ready(function () {
+
+                //$(document).ready(function () {
+                //$('.table').DataTable();
+                // });
+
+                $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+            });
+        </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -136,13 +184,13 @@
                      <div class="col-md-4">
                         <label>Old Password</label>
                         <div class="form-group">
-                           <asp:TextBox style ="margin-top:10px; margin-bottom:10px" class="form-control" ID="TextBox9" runat="server" placeholder="Old Password" TextMode="Password" ReadOnly="True"></asp:TextBox>
+                           <asp:TextBox style ="margin-top:10px; margin-bottom:10px" class="form-control" ID="TextBox9" runat="server" placeholder="Old Password"  ReadOnly="True"></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <label>New Password</label>
                         <div class="form-group">
-                           <asp:TextBox style ="margin-top:10px; margin-bottom:10px" class="form-control" ID="TextBox10" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                           <asp:TextBox style ="margin-top:10px; margin-bottom:10px" class="form-control" ID="TextBox10" runat="server" placeholder="Password"></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -150,7 +198,7 @@
                      <div class="col-8 mx-auto">
                         <center>
                            <div class="form-group">
-                              <asp:Button style ="margin-top:10px; margin-bottom:10px" class="w-100 btn btn-primary btn-block btn-lg" ID="Button1" runat="server" Text="Update" />
+                              <asp:Button style ="margin-top:10px; margin-bottom:10px" class="w-100 btn btn-primary btn-block btn-lg" ID="Button1" runat="server" Text="Update" OnClick="Button1_Click" />
                            </div>
                         </center>
                      </div>
@@ -173,7 +221,7 @@
                      <div class="col">
                         <center>
                            <h4>Your Issued Books</h4>
-                           <asp:Label class="badge rounded-pill bg-info text-dark" ID="Label2" runat="server" Text="your books info"></asp:Label>
+                           <asp:Label class="badge rounded-pill bg-info text-dark" ID="Label2" runat="server" Text="Books Info"></asp:Label>
                         </center>
                      </div>
                   </div>
